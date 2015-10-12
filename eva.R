@@ -11,7 +11,7 @@ eva <- read.csv('eva.csv')
 eva$Date_raw <- eva$Date #make a backup
 eva$Date <- gsub('Sept.', 'Sep.', eva$Date_raw) #non-standard abbreviation
 eva$Date <- gsub(' ([0-9]*)-[0-9]*,', ' \\1,', eva$Date, perl=T, fixed=F) #They have May 21-22, 1904, but we want just a single day, so make that May 21, 1904
-eva$Date <- as.Date(parse_date_time(eva$Date, c('%m/%d/%y', '%m %d, %y'), locale="English_United States.1252")) #And make it an actual date, so it can be used as a number in models
+eva$Date <- as.Date(parse_date_time(eva$Date, c('%m/%d/%y', '%m %d, %y'), locale="C")) #And make it an actual date, so it can be used as a number in models
 
 #convert duration from a string to numberic hours
 eva$Duration_raw <- eva$Duration
